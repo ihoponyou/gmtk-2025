@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgoki8v3186fo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mwb40"]
+
+[sub_resource type="Sky" id="Sky_mwb40"]
+sky_material = SubResource("ProceduralSkyMaterial_mwb40")
+
+[sub_resource type="Environment" id="Environment_mwb40"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_mwb40")
+ambient_light_source = 3
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mwb40")
+
+[node name="Camera3D" type="Camera3D" parent="."]
