@@ -22,7 +22,3 @@ func _process(delta: float) -> void:
 	
 	last_tile_map_pos = tile_pos
 	set_cell(tile_pos, TILE_SET_SOURCE_ID, COOL_TILE_POS)
-
-func _input(event: InputEvent) -> void:
-	if event.is_action("secondary") and event.is_pressed():
-		TurnManager.process_turn()

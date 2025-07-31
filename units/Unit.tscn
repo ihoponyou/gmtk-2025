@@ -8,6 +8,7 @@ atlas = ExtResource("2_pyybm")
 region = Rect2(32, 0, 8, 8)
 
 [node name="Unit" type="Node2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_pyybm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

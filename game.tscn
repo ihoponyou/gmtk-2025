@@ -1,13 +1,16 @@
-[gd_scene load_steps=10 format=4 uid="uid://dgoki8v3186fo"]
+[gd_scene load_steps=13 format=4 uid="uid://dgoki8v3186fo"]
 
 [ext_resource type="TileSet" uid="uid://nfmr2vv1srsv" path="res://tile_set.tres" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://dngalm2vfyshn" path="res://foreground.gd" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://bv2xmnffhdjp6" path="res://units/Unit.tscn" id="3_feb5d"]
 [ext_resource type="Texture2D" uid="uid://sav3buym8kki" path="res://texture_atlas.tres" id="4_7jktm"]
-[ext_resource type="Script" uid="uid://brycqpl75o00g" path="res://turn_indicator.gd" id="4_fc0e3"]
+[ext_resource type="Script" uid="uid://brycqpl75o00g" path="res://ui/turn_indicator.gd" id="4_fc0e3"]
+[ext_resource type="Script" uid="uid://c01k1qth7mdh7" path="res://ui/turn_button.gd" id="6_ryrav"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7jktm"]
 font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_ryrav"]
+font_size = 32
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eow3j"]
 atlas = ExtResource("4_7jktm")
@@ -31,6 +34,13 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="InputEventAction" id="InputEventAction_7jktm"]
+action = &"next_turn"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_ryrav"]
+events = [SubResource("InputEventAction_7jktm")]
+
 [node name="Game" type="Node2D"]
 
 [node name="background" type="TileMapLayer" parent="."]
@@ -45,9 +55,6 @@ tile_map_data = PackedByteArray("AAANAB4AAQAGAAcAAAANAAUAAQAGAAcAAAA=")
 tile_set = ExtResource("1_80nbo")
 collision_enabled = false
 script = ExtResource("2_e2o6t")
-
-[node name="Unit" parent="foreground" instance=ExtResource("3_feb5d")]
-position = Vector2(104, 50.75)
 
 [node name="TurnIndicators" type="Node" parent="."]
 script = ExtResource("4_fc0e3")
@@ -64,9 +71,34 @@ text = "YOUR TURN"
 label_settings = SubResource("LabelSettings_7jktm")
 horizontal_alignment = 1
 
+[node name="TurnLabel" type="Label" parent="TurnIndicators"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.5
+offset_top = 64.0
+offset_right = 46.5
+offset_bottom = 201.0
+grow_horizontal = 2
+text = "DAY 0"
+label_settings = SubResource("LabelSettings_ryrav")
+horizontal_alignment = 1
+
 [node name="ArrowIndicator" type="AnimatedSprite2D" parent="TurnIndicators"]
 position = Vector2(400, 976)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_vef74")
 animation = &"arrow_loop"
 frame_progress = 0.378012
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TurnButton" type="Button" parent="CanvasLayer"]
+offset_left = 596.0
+offset_top = 886.0
+offset_right = 718.0
+offset_bottom = 929.0
+keep_pressed_outside = true
+shortcut = SubResource("Shortcut_ryrav")
+text = "NEXT TURN"
+script = ExtResource("6_ryrav")
