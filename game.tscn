@@ -1,15 +1,35 @@
-[gd_scene load_steps=6 format=4 uid="uid://dgoki8v3186fo"]
+[gd_scene load_steps=10 format=4 uid="uid://dgoki8v3186fo"]
 
 [ext_resource type="TileSet" uid="uid://nfmr2vv1srsv" path="res://tile_set.tres" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://dngalm2vfyshn" path="res://foreground.gd" id="2_e2o6t"]
-[ext_resource type="Texture2D" uid="uid://co5jswm5bah78" path="res://assets/Tilemap/colored_tilemap_packed.png" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://bv2xmnffhdjp6" path="res://units/Unit.tscn" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://sav3buym8kki" path="res://texture_atlas.tres" id="4_7jktm"]
+[ext_resource type="Script" uid="uid://brycqpl75o00g" path="res://turn_indicator.gd" id="4_fc0e3"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_e2o6t"]
-font_size = 8
+[sub_resource type="LabelSettings" id="LabelSettings_7jktm"]
+font_size = 48
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_feb5d"]
-atlas = ExtResource("3_feb5d")
-region = Rect2(32, 0, 8, 8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_eow3j"]
+atlas = ExtResource("4_7jktm")
+region = Rect2(24, 48, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5wjh"]
+atlas = ExtResource("4_7jktm")
+region = Rect2(24, 56, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vef74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eow3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5wjh")
+}],
+"loop": true,
+"name": &"arrow_loop",
+"speed": 2.0
+}]
 
 [node name="Game" type="Node2D"]
 
@@ -26,12 +46,27 @@ tile_set = ExtResource("1_80nbo")
 collision_enabled = false
 script = ExtResource("2_e2o6t")
 
-[node name="Label" type="Label" parent="foreground"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "10"
-label_settings = SubResource("LabelSettings_e2o6t")
+[node name="Unit" parent="foreground" instance=ExtResource("3_feb5d")]
+position = Vector2(104, 50.75)
 
-[node name="Sprite2D" type="Sprite2D" parent="foreground"]
-position = Vector2(75.25, 64.5)
-texture = SubResource("AtlasTexture_feb5d")
+[node name="TurnIndicators" type="Node" parent="."]
+script = ExtResource("4_fc0e3")
+
+[node name="TeamLabel" type="Label" parent="TurnIndicators"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.5
+offset_right = 46.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "YOUR TURN"
+label_settings = SubResource("LabelSettings_7jktm")
+horizontal_alignment = 1
+
+[node name="ArrowIndicator" type="AnimatedSprite2D" parent="TurnIndicators"]
+position = Vector2(400, 976)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_vef74")
+animation = &"arrow_loop"
+frame_progress = 0.378012

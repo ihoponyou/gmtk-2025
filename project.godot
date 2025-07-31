@@ -15,6 +15,11 @@ run/main_scene="uid://byf4k4njcoxwi"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TurnManager="*res://autoloads/turn_manager.gd"
+UnitManager="*res://autoloads/unit_manager.gd"
+
 [display]
 
 window/size/viewport_width=864

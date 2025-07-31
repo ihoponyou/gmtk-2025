@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv2xmnffhdjp6"]
+
+[ext_resource type="Script" uid="uid://dy07noh0fai23" path="res://units/unit.gd" id="1_pyybm"]
+[ext_resource type="Texture2D" uid="uid://sav3buym8kki" path="res://texture_atlas.tres" id="2_pyybm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyybm"]
+atlas = ExtResource("2_pyybm")
+region = Rect2(32, 0, 8, 8)
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_pyybm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+texture = SubResource("AtlasTexture_pyybm")

@@ -11,6 +11,7 @@ var should_replace := false
 func _process(delta: float) -> void:
 	var mouse_pos := get_local_mouse_position()
 	var tile_pos := local_to_map(mouse_pos)
+	
 	if tile_pos == last_tile_map_pos:
 		return
 	
@@ -21,3 +22,7 @@ func _process(delta: float) -> void:
 	
 	last_tile_map_pos = tile_pos
 	set_cell(tile_pos, TILE_SET_SOURCE_ID, COOL_TILE_POS)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action("secondary") and event.is_pressed():
+		TurnManager.process_turn()
