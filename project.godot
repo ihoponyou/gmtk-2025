@@ -15,7 +15,15 @@ run/main_scene="uid://byf4k4njcoxwi"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=864
+window/size/viewport_height=1152
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
