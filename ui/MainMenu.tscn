@@ -32,7 +32,7 @@ anchor_top = 0.45
 anchor_right = 0.7
 anchor_bottom = 0.6
 offset_right = -6.10352e-05
-text = "[title]"
+text = "WAR"
 label_settings = SubResource("LabelSettings_gl0q7")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -44,7 +44,7 @@ anchor_left = 0.3
 anchor_top = 0.6
 anchor_right = 0.7
 anchor_bottom = 1.0
-text = "Press anything to start
+text = "PRESS ANYTHING
 "
 label_settings = SubResource("LabelSettings_t7e0r")
 horizontal_alignment = 1

@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv2xmnffhdjp6"]
+[gd_scene load_steps=5 format=3 uid="uid://bv2xmnffhdjp6"]
 
 [ext_resource type="Script" uid="uid://dy07noh0fai23" path="res://units/unit.gd" id="1_pyybm"]
-[ext_resource type="Texture2D" uid="uid://sav3buym8kki" path="res://texture_atlas.tres" id="2_pyybm"]
+[ext_resource type="Texture2D" uid="uid://bip1pv5xos8va" path="res://atlas.tres" id="2_pyybm"]
+[ext_resource type="PackedScene" uid="uid://dmgdcpabt2f4h" path="res://components/Health.tscn" id="3_hf86k"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pyybm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf86k"]
 atlas = ExtResource("2_pyybm")
-region = Rect2(32, 0, 8, 8)
+region = Rect2(48, 56, 8, 8)
 
-[node name="Unit" type="Node2D"]
-scale = Vector2(4, 4)
+[node name="Unit" type="Node2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_pyybm")
+health = NodePath("Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4, 4)
-texture = SubResource("AtlasTexture_pyybm")
+position = Vector2(16, 16)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_hf86k")
+
+[node name="Health" parent="." instance=ExtResource("3_hf86k")]
+position = Vector2(0, -16)

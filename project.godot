@@ -24,8 +24,8 @@ UnitManager="*res://autoloads/unit_manager.gd"
 
 window/size/viewport_width=864
 window/size/viewport_height=1152
-window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [input]
 

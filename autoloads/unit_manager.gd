@@ -8,7 +8,7 @@ func choose_units() -> Array[Unit]:
 	var units: Array[Unit] = []
 	for i in 1:
 		var peon := PEON.instantiate()
-		peon.cell = Vector2i(i, i)
+		peon.cell = Vector2i(13, 6)
 		peon.team = Unit.Team.ENEMY
 		units.append(peon)
 	return units

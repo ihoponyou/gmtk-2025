@@ -13,18 +13,27 @@ var current_turn := 0 :
 		current_turn = value
 		turn_changed.emit(current_turn)
 
+
+func is_player_turn() -> bool:
+	return current_team == Unit.Team.PLAYER
+
 func process_turn():
-	if current_team == Unit.Team.ENEMY:
-		var units := UnitManager.choose_units()
-		for unit in units:
-			UnitManager.spawn_unit(unit)
-	# place units/buildings
-	
 	for unit in UnitManager.all_units:
 		if unit.team != current_team:
 			continue
+		if unit.health.get_amount() <= 0:
+			# this is chopped
+			unit.visible = false
+			continue
 		unit.take_turn()
+
+	if current_team == Unit.Team.ENEMY:
+		if current_turn % 3 == 0:
+			var units := UnitManager.choose_units()
+			for unit in units:
+				UnitManager.spawn_unit(unit)
+	
+	# get player to place units/buildings
 	
 	current_team = (current_team + 1) % Unit.Team.size()
 	current_turn += 1
-	

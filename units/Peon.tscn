@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://5lndp6slotmi"]
+[gd_scene load_steps=5 format=3 uid="uid://5lndp6slotmi"]
 
 [ext_resource type="PackedScene" uid="uid://bv2xmnffhdjp6" path="res://units/Unit.tscn" id="1_ehowq"]
 [ext_resource type="Script" uid="uid://djt3ca8fehro8" path="res://units/peon.gd" id="2_4line"]
+[ext_resource type="Texture2D" uid="uid://bip1pv5xos8va" path="res://atlas.tres" id="3_7sgp4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrjdr"]
+atlas = ExtResource("3_7sgp4")
+region = Rect2(32, 0, 8, 8)
 
 [node name="Peon" instance=ExtResource("1_ehowq")]
 script = ExtResource("2_4line")
+attack_range = 5
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_lrjdr")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmgdcpabt2f4h"]
+
+[ext_resource type="Script" uid="uid://cdwirpgvnm1dr" path="res://components/health.gd" id="1_tnghr"]
+
+[node name="Health" type="Node2D" node_paths=PackedStringArray("_bar_background", "_bar_foreground")]
+script = ExtResource("1_tnghr")
+_bar_background = NodePath("Bar/Background")
+_bar_foreground = NodePath("Bar/Foreground")
+
+[node name="Bar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="ColorRect" parent="Bar"]
+offset_right = 32.0
+offset_bottom = 8.0
+color = Color(0.857267, 0.0852701, 0.0843086, 1)
+
+[node name="Foreground" type="ColorRect" parent="Bar"]
+offset_right = 32.0
+offset_bottom = 8.0
+color = Color(0.0980392, 0.85098, 0.0823529, 1)
