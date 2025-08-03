@@ -6,9 +6,12 @@ extends Button
 var _fast_mode := false
 
 func _ready() -> void:
-	fast_toggle.toggled.connect(func (on: bool): _fast_mode = on)
+	fast_toggle.toggled.connect(func (on: bool):
+		_fast_mode = on
+		$AudioStreamPlayer.play())
 
 func _pressed() -> void:
+	$AudioStreamPlayer.play()
 	TurnManager.process_turn()
 	
 	if TurnManager.current_team != Unit.Team.PLAYER:

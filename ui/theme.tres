@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://cjw4275b71cs8"]
 
-[ext_resource type="FontFile" uid="uid://dtnpuo2nvo7og" path="res://assets/using_fonts_monospace_bitmap_font_example.webp" id="1_rqugq"]
+[ext_resource type="FontFile" uid="uid://dtnpuo2nvo7og" path="res://assets/font_LibreQuake.webp" id="1_rqugq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqugq"]
 

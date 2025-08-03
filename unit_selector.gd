@@ -28,6 +28,9 @@ func _ready() -> void:
 		_container.add_child(unit_button)
 
 func _on_button_pressed(unit_type: Unit.UnitType):
+	if unit_type == selected_type:
+		return
 	_buttons[selected_type].is_selected = false
 	_buttons[unit_type].is_selected = true
 	selected_type = unit_type
+	$AudioStreamPlayer.play()

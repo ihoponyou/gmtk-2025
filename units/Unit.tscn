@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv2xmnffhdjp6"]
+[gd_scene load_steps=7 format=3 uid="uid://bv2xmnffhdjp6"]
 
 [ext_resource type="Script" uid="uid://dy07noh0fai23" path="res://units/unit.gd" id="1_pyybm"]
 [ext_resource type="Texture2D" uid="uid://bip1pv5xos8va" path="res://atlas.tres" id="2_pyybm"]
 [ext_resource type="PackedScene" uid="uid://dmgdcpabt2f4h" path="res://components/Health.tscn" id="3_hf86k"]
+[ext_resource type="AudioStream" uid="uid://k0a6bqe1xp3k" path="res://assets/sound/death.wav" id="4_ciyvu"]
+[ext_resource type="AudioStream" uid="uid://cl83n6r53uhc8" path="res://assets/sound/hit_1.wav" id="4_xyftx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf86k"]
 atlas = ExtResource("2_pyybm")
 region = Rect2(80, 72, 8, 8)
 
-[node name="Unit" type="Node2D" node_paths=PackedStringArray("health", "_sprite") groups=["unit"]]
+[node name="Unit" type="Node2D" node_paths=PackedStringArray("health", "_hit_sound", "_death_sound", "_sprite") groups=["unit"]]
 script = ExtResource("1_pyybm")
 health = NodePath("Health")
+_hit_sound = NodePath("HitSoundPlayer")
+_death_sound = NodePath("DeathSoundPlayer")
 _sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,4 +23,13 @@ scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_hf86k")
 
 [node name="Health" parent="." instance=ExtResource("3_hf86k")]
+z_index = 99
+z_as_relative = false
 position = Vector2(0, -16)
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xyftx")
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ciyvu")
+volume_db = -10.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://byf4k4njcoxwi"]
+[gd_scene load_steps=8 format=4 uid="uid://byf4k4njcoxwi"]
 
 [ext_resource type="Script" uid="uid://c8cfctds2x14" path="res://ui/main_menu.gd" id="1_t7e0r"]
 [ext_resource type="TileSet" uid="uid://nfmr2vv1srsv" path="res://tile_set.tres" id="2_0dkrt"]
-[ext_resource type="FontFile" uid="uid://dtnpuo2nvo7og" path="res://assets/using_fonts_monospace_bitmap_font_example.webp" id="3_nmrkx"]
+[ext_resource type="FontFile" uid="uid://dtnpuo2nvo7og" path="res://assets/font_LibreQuake.webp" id="3_nmrkx"]
+[ext_resource type="AudioStream" uid="uid://cpy3053wishr7" path="res://assets/sound/pickup.wav" id="4_8v85u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gl0q7"]
 font = ExtResource("3_nmrkx")
@@ -69,3 +70,8 @@ text = "PRESS ANYTHING
 label_settings = SubResource("LabelSettings_t7e0r")
 horizontal_alignment = 1
 script = SubResource("GDScript_nmrkx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8v85u")
+volume_db = -23.276
+pitch_scale = 0.56

@@ -48,6 +48,8 @@ static var their_fort: Unit
 @export var type := UnitType.PEON
 @export var team := Team.PLAYER
 
+@export var _hit_sound: AudioStreamPlayer
+@export var _death_sound: AudioStreamPlayer
 @export var _sprite: Sprite2D
 var _damage := 0
 var _attack_range := 0
@@ -92,3 +94,11 @@ func _ready() -> void:
 		health.position = Vector2(-64, 40 if (team == Team.PLAYER) else -16)
 		health.scale.x = 5
 	_sprite.texture = UNIT_TYPE_TO_TEXTURE[type]
+	health.amount_changed.connect(_on_health_changed)
+
+func _on_health_changed(amount: int):
+	if amount > 0:
+		_hit_sound.play()
+		return
+	_hit_sound.stop()
+	_death_sound.play()

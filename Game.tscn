@@ -1,13 +1,15 @@
-[gd_scene load_steps=17 format=4 uid="uid://dgoki8v3186fo"]
+[gd_scene load_steps=19 format=4 uid="uid://dgoki8v3186fo"]
 
 [ext_resource type="Script" uid="uid://4posqybdysmv" path="res://game.gd" id="1_3mrqo"]
 [ext_resource type="TileSet" uid="uid://nfmr2vv1srsv" path="res://tile_set.tres" id="1_r0x5m"]
+[ext_resource type="AudioStream" uid="uid://cmadvb3k41e7m" path="res://assets/sound/Three Red Hearts - Save the City.ogg" id="2_gwjdr"]
 [ext_resource type="Script" uid="uid://brycqpl75o00g" path="res://ui/turn_indicator.gd" id="3_joorw"]
 [ext_resource type="SpriteFrames" uid="uid://co0k8qfl108uy" path="res://ui/arrow_frames.tres" id="4_2vekm"]
-[ext_resource type="FontFile" uid="uid://dtnpuo2nvo7og" path="res://assets/using_fonts_monospace_bitmap_font_example.webp" id="5_gwjdr"]
+[ext_resource type="FontFile" uid="uid://dtnpuo2nvo7og" path="res://assets/font_LibreQuake.webp" id="5_gwjdr"]
 [ext_resource type="Theme" uid="uid://cjw4275b71cs8" path="res://ui/theme.tres" id="5_yhmtn"]
 [ext_resource type="Script" uid="uid://c01k1qth7mdh7" path="res://ui/ready_button.gd" id="5_yx171"]
 [ext_resource type="Script" uid="uid://dk580lsxuw7f4" path="res://unit_selector.gd" id="6_yx171"]
+[ext_resource type="AudioStream" uid="uid://d162lqe715aeh" path="res://assets/sound/select_1.wav" id="10_lvtmh"]
 [ext_resource type="PackedScene" uid="uid://bv2xmnffhdjp6" path="res://units/Unit.tscn" id="10_yhmtn"]
 [ext_resource type="PackedScene" uid="uid://byf4k4njcoxwi" path="res://ui/MainMenu.tscn" id="11_yhmtn"]
 [ext_resource type="Script" uid="uid://b2cwd61irew2w" path="res://placement_grid.gd" id="12_gwjdr"]
@@ -33,6 +35,12 @@ events = [SubResource("InputEventAction_r0x5m")]
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3mrqo")
 metadata/_edit_vertical_guides_ = [351.0]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gwjdr")
+volume_db = -30.0
+autoplay = true
+parameters/looping = true
 
 [node name="background" type="TileMapLayer" parent="."]
 scale = Vector2(4, 4)
@@ -118,6 +126,10 @@ keep_pressed_outside = true
 shortcut = SubResource("Shortcut_r0x5m")
 text = "FAST MODE"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ReadyButton"]
+stream = ExtResource("10_lvtmh")
+volume_db = -14.857
+
 [node name="UnitSelector" type="Control" parent="." node_paths=PackedStringArray("_container")]
 layout_mode = 3
 anchors_preset = 4
@@ -142,6 +154,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UnitSelector"]
+stream = ExtResource("10_lvtmh")
+volume_db = -14.857
 
 [node name="PlacementGrid" type="TileMapLayer" parent="." node_paths=PackedStringArray("_unit_selector", "_preview")]
 position = Vector2(352, 800)
