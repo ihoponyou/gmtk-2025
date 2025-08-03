@@ -3,6 +3,8 @@ extends Node
 signal team_changed(team: Unit.Team)
 signal turn_changed(turn: int)
 
+const UNIT := preload("res://units/Unit.tscn")
+
 var current_team := Unit.Team.PLAYER :
 	set(value):
 		current_team = value
@@ -18,20 +20,24 @@ func is_player_turn() -> bool:
 	return current_team == Unit.Team.PLAYER
 
 func process_turn():
-	for unit in UnitManager.all_units:
+	for unit: Unit in get_tree().get_nodes_in_group("unit"):
+		if unit.type == Unit.UnitType.FORT:
+			continue
 		if unit.team != current_team:
 			continue
 		if unit.health.get_amount() <= 0:
-			# this is chopped
-			unit.visible = false
+			unit.queue_free()
 			continue
 		unit.take_turn()
 
 	if current_team == Unit.Team.ENEMY:
 		if current_turn % 3 == 0:
-			var units := UnitManager.choose_units()
-			for unit in units:
-				UnitManager.spawn_unit(unit)
+			for unit in [Unit.UnitType.WIZ]:
+				var u := UNIT.instantiate()
+				u.load_type()
+				u.team = Unit.Team.ENEMY
+				u.cell = Vector2i(13, 6)
+				get_tree().current_scene.add_child(u)
 	
 	# get player to place units/buildings
 	

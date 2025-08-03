@@ -14,11 +14,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Background" type="ColorRect" parent="Bar"]
+layout_mode = 0
 offset_right = 32.0
 offset_bottom = 8.0
 color = Color(0.857267, 0.0852701, 0.0843086, 1)
 
 [node name="Foreground" type="ColorRect" parent="Bar"]
+layout_mode = 0
 offset_right = 32.0
 offset_bottom = 8.0
 color = Color(0.0980392, 0.85098, 0.0823529, 1)

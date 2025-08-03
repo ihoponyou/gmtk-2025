@@ -6,11 +6,12 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf86k"]
 atlas = ExtResource("2_pyybm")
-region = Rect2(48, 56, 8, 8)
+region = Rect2(80, 72, 8, 8)
 
-[node name="Unit" type="Node2D" node_paths=PackedStringArray("health")]
+[node name="Unit" type="Node2D" node_paths=PackedStringArray("health", "_sprite") groups=["unit"]]
 script = ExtResource("1_pyybm")
 health = NodePath("Health")
+_sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 16)

@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccrgs48c081a7"]
+
+[ext_resource type="Script" uid="uid://bwinhifeatqh8" path="res://ui/unit_button.gd" id="1_grq2w"]
+[ext_resource type="Texture2D" uid="uid://bsnweptxmy4vs" path="res://assets/tex_fort.tres" id="3_na00r"]
+[ext_resource type="Theme" uid="uid://cjw4275b71cs8" path="res://ui/theme.tres" id="4_0rg8y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rg8y"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_na00r"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[node name="UnitButton" type="Control" node_paths=PackedStringArray("outline", "unit_name_label", "button", "_texture_rect")]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 260.0
+offset_bottom = 48.0
+script = ExtResource("1_grq2w")
+outline = NodePath("Outline")
+unit_name_label = NodePath("UnitName")
+unit_name = "unit"
+button = NodePath("InvisibleButton")
+_texture_rect = NodePath("TextureRect")
+
+[node name="Outline" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0rg8y")
+
+[node name="Outline2" type="Panel" parent="Outline"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_na00r")
+
+[node name="UnitName" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -24.0
+offset_right = 300.0
+offset_bottom = 24.0
+grow_vertical = 2
+theme = ExtResource("4_0rg8y")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=orange][[/color]P[color=orange]][/color]EON"
+vertical_alignment = 1
+
+[node name="InvisibleButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 48.0
+offset_bottom = 44.0
+texture = ExtResource("3_na00r")

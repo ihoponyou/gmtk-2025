@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cjw4275b71cs8"]
+
+[ext_resource type="FontFile" uid="uid://dtnpuo2nvo7og" path="res://assets/using_fonts_monospace_bitmap_font_example.webp" id="1_rqugq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqugq"]
+
+[resource]
+default_font = ExtResource("1_rqugq")
+default_font_size = 24
+Button/colors/font_hover_color = Color(0.95, 0.475, 0, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_rqugq")

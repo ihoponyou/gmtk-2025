@@ -1,7 +1,7 @@
+class_name MainMenu
 extends Control
 
-const Game = preload("res://Game.tscn")
-
-
 func _unhandled_input(event: InputEvent) -> void:
-	get_tree().change_scene_to_packed(Game)
+	if not event.is_pressed():
+		return
+	visible = false

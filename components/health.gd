@@ -6,8 +6,8 @@ signal amount_changed(amount: int)
 @export var _bar_background: ColorRect
 @export var _bar_foreground: ColorRect
 
-var _max_amount := 10.0
-var _amount := 10.0 :
+@export var _max_amount := 10.0
+@export var _amount := 10.0 :
 	set(value):
 		if _amount == value:
 			return

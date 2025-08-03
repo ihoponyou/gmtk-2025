@@ -11,9 +11,8 @@ config_version=5
 [application]
 
 config/name="gmtk-2025"
-run/main_scene="uid://byf4k4njcoxwi"
+run/main_scene="uid://dgoki8v3186fo"
 config/features=PackedStringArray("4.4", "Forward Plus")
-boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
@@ -21,7 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 TurnManager="*res://autoloads/turn_manager.gd"
-UnitManager="*res://autoloads/unit_manager.gd"
+SceneSwitcher="*res://autoloads/scene_switcher.gd"
 
 [display]
 
@@ -29,6 +28,10 @@ window/size/viewport_width=864
 window/size/viewport_height=1152
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
+
+[global_group]
+
+unit=""
 
 [input]
 
